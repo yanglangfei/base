@@ -1,0 +1,17 @@
+#配置数据库公共配置
+define:
+  druid:
+    username: admin
+    password: 111111
+  mysql:
+    write:
+      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: admin123
+    read1:
+      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: admin123
+  paging:
+    defaultSize: 15      #默认分页大小
+    defaultNum: 1

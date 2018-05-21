@@ -1,11 +1,15 @@
 spring:
   cloud:
+    client:
+      ipAddress: localhost
     config:
       server:
         git:
-          uri: http://
-          search-paths:
-          basedir:
+          uri: https://github.com/yanglangfei/base/tree/master
+          search-paths: /config
+      profile: dev
+      fail-fast: true
+         # basedir:
 
 server:
   port: 8888

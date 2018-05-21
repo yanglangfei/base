@@ -4,5 +4,6 @@ eureka:
       defaultZone: http://localhost:8761
   instance:
     preferIpAddress: true
-      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
       health-check-url-path: /health
+
+

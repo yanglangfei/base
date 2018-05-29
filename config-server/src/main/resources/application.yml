@@ -9,11 +9,14 @@ spring:
           search-paths: /config/config
           basedir: /config
       profile: dev
-      fail-fast: true
+  application:
+    name: config-server
+    #  fail-fast: true
          # basedir:
 
 server:
   port: 8888
+
 
 
 

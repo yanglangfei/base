@@ -1,0 +1,51 @@
+define:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    write:
+      driverClassName: com.mysql.jdbc.Driver
+      url: ${define.mysql.write.url}
+      username: ${define.mysql.write.username}
+      password: ${define.mysql.write.password}
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000 # 配置获取连接等待超时的时间
+      timeBetweenEvictionRunsMillis: 60000  # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      minEvictableIdleTimeMillis: 300000 # 配置一个连接在池中最小生存的时间，单位是毫秒
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,log4j # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 #通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      useGlobalDataSourceStat: true
+    read1:
+      driverClassName: com.mysql.jdbc.Driver
+      url: ${define.mysql.read1.url}
+      username: ${define.mysql.read1.username}
+      password: ${define.mysql.read1.password}
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,log4j # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 #通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      useGlobalDataSourceStat: true
+  alipay:
+    auth:
+      appId: 2017032806446530
+      sellerId: 2088621608939138
+      rsa2Flg: true
+      url: https://openapi.alipay.com/gateway.do
+      privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCr8MFu6SsemVsnONo7JjxFW/EGkauRRbM+1e5dvTR+GW9Pw50cLO8+C7aebPbiRuXeym8xIwIboPSY7kTAXx1/IcXO0Xy4RMG5JOBS5RDOHumlbdgkzSmQbz3A/UqazzeBGELxbQ5JGdau69caq0FqRTz1nnITe9Jl7pfAas5HPBILvmAw+B6vr4/6BB9UyZYOVxwlwZZuYohae7/lYhPOakT2yTzBNmxMz3LruCN7MSYFz2Ci1L0Vcifw888SpjMr8JrXMFr2OwNSY0Tt7dz9Ej3rdDKTXTYMftnR7/cH6tCokKTV40jHNUEm86AadTw2nuRR+0kYu4+5NVfQkSVTAgMBAAECggEAJRLVcoe+L2vbtrpQe96DsmTftI3mU32W556TNg0c62+qi6VfE/swXs2Bw+k01pd46y/1B8BHrRNoii0eD+iyYH40u6J55PWWW8hywgz4MamCsZPcvhqqsqT5yMoUswqpKiHEFXBxWxvCKZdamzp/8V0ahs9yQ3c4Z5gpimi9L6iOjLQd2dPwuNgcrfBmNY7c1uFtw8nm2krh+Esw0+J+O0av2RqOTD7AU56k1l+h/miqhkMP9lY3wVexMY+RMMYsz/LTSJ95tPgLX2jXidirCUgH7LCsNZUBpgqD+nBsy+UMlPQz08AVLpcrxHK7mwuo8pCNMj0ZFAceCwv+U2BvqQKBgQDerKVBkkz6kqiGMktBwQNEV7WyibzJp+RCjjXhZ1emxKneF4wFdI7rzwZoNt9+DBFXvFUKL6gy2DXwzsoKtBLhNPWQiFVDO8Elhp5N9YT5euN8BiAE0sc/7VwyAon3/8aS7/5kzbl0lOCQMLKtfji4ZKbkrR2WmAf4N9KpPnpUtQKBgQDFrFVh1PdvwJ6pStiDCIOgUwEzBXqrnoP+G+QFdXvr+4OC1EDeQw1Es4AZBJXTuF/LHjStRgsT5N/Zaez94da88E1kbZEw1FUVleyV9riexs47BpjzGwSXxYeZPtwumWHF78Z3CJTqO1im9/vZ/pD5ByYb0YkENFs4P1nsz6ue5wKBgDuscsEGzwBbqzQDaG2fpxt6kePdy60TBDXd3IyiYDf9/jPZhZm0qdSB74qgIfaqjz8+5l9LdDzj+lilYjnKFkEqKyDnmEnjSpie4e+se01MZIhJL+16+xCjsJBqY8UFU5bvH/KtuySF/URG+KtL5zFrL9qalhJUfdZER305lBj9AoGAavRn7ltQ1oKeVnNM2vlMXv8KcxTP3vQR7vggVGPQ/UpFShCWWKxnDXkiImc8uiXUjw506hwv+j+obvbFaEk961UKSwCNwqHgt6E7NZkdI6vmAkH7l+5SedxDFkPQ1tXe9T5bYCSgjmw194HOH5GB13xqvjqNrFy3zqNYgK2M6pkCgYEA3VJlrxtuEVvoRldA3MdsKnIbaK3ihX4zrtM7beH/M4SV85QFXbH4r8ZPW9HBIR6YFtXbZ1UySTUL/bKGfL6K/sZsdILoOKesjG8pYzQBz3vuUKir+nV+LCRKf9tLy/Sc00kQ9jEoTY8ASgYEbEypqlJvUVaYumSiwUElEy2x848=
+      publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkLgiKptiEIaiglV4P6TtEzclTp6t+vgqdzjceINU8F8JbT0gBNv/qVlzY0LJX3gl9LvSQ2UrhLkMfYqHhrV9+4xWmvcLB6vjBYRpVXVD0Ee5g1kAiQU8X/pK1SXx2PYHHH3jhP1Jtpz+wy2+/D/L3D9zLEChewfWddAK3kjwBC531R7+w2vJ0VupFrqwbzxNefrG1ZRdPMnwrD6B98kf2UsKyxaJlRjS75IFJhDq9/hgi1yKA32XY7ebaTysNNPKKKbFgF2gT1Vel9DwLufJKu/C1sieTq91WGVt1A7MeyUC8njXxuQm6DPgLO2NESYKItfTLAeGFKJ2MXLSxEq8OQIDAQAB

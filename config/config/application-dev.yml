@@ -93,6 +93,6 @@ logging:
 
 
 # 关闭安全访问
-management:
-  security:
-    enabled: false
+#management:
+ # security:
+  #  enabled: false

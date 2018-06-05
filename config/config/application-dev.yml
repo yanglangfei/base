@@ -5,11 +5,10 @@ eureka:
   instance:
     preferIpAddress: true
 
-#数据库监控  druid 配置
 define:
   druid:
     username: admin
-    password: admin123
+    password: admin123     #数据库监控  druid 配置
   mysql:
     write:
       url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8

@@ -4,3 +4,20 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     preferIpAddress: true
+
+define:
+  druid:
+    username: admin
+    password: admin123
+  mysql:
+    write:
+      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: admin123
+    read1:
+      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: admin123
+  paging:
+    defaultSize: 15      #默认分页大小
+    defaultNum: 1

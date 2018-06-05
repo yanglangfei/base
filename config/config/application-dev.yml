@@ -90,3 +90,9 @@ logging:
     org.springframework.data.mongodb.core: debug
 #    org.springframework: debug
   file: D:\Logs\com\naju\${spring.application.name}.log
+
+
+# 关闭安全访问
+management:
+  security:
+    enabled: false

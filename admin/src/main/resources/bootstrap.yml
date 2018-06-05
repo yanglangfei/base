@@ -3,27 +3,26 @@ server:
 spring:
   application:
     name: app-admin
+  cloud:
+    config:
+      fail-fast: true
+      uri: http://config:8888
+      profile: dev
   boot:
     admin:
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,turbine.stream
       turbine:
         enabled: true
 #        clusters: default
 #        location: hystrix
-#management:
- # security:
-  #  enabled: false #关闭已有安全认证
-#security:
- # basic:
-  #  enabled: true #关闭默认认证，使用自定义认证处理
-  #user:
-   # name: admin
-    #password: admin123
+management:
+  security:
+    enabled: false #关闭已有安全认证
+security:
+  basic:
+    enabled: false #关闭默认认证，使用自定义认证处理
+  user:
+    name: admin
+    password: admin123
 hystrix.stream.dashboard.intervalInMilliseconds: 5000
-
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    preferIpAddress: true

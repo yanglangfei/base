@@ -5,7 +5,6 @@ eureka:
   instance:
     preferIpAddress: true
 
-
 define:
   druid:
     username: admin

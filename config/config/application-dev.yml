@@ -5,7 +5,7 @@ eureka:
   instance:
     preferIpAddress: true
 
-
+#数据库监控  druid 配置
 define:
   druid:
     username: admin
@@ -22,3 +22,9 @@ define:
   paging:
     defaultSize: 15      #默认分页大小
     defaultNum: 1
+
+#admin 监控配置信息
+security:
+  user:
+    password: admin123
+    name: admin

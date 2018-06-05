@@ -18,10 +18,10 @@ server:
   port: 8888
 
 
-security:
-  user:
-    password: admin123
-    name: admin
+#security:
+ # user:
+  #  password: admin123
+   # name: admin
 
 
 

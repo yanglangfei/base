@@ -5,10 +5,11 @@ eureka:
   instance:
     preferIpAddress: true
 
+
 define:
   druid:
     username: admin
-    password: admin123     #数据库监控  druid 配置
+    password: admin123
   mysql:
     write:
       url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
@@ -21,9 +22,3 @@ define:
   paging:
     defaultSize: 15      #默认分页大小
     defaultNum: 1
-
-#admin 监控配置信息
-security:
-  user:
-    password: admin123
-    name: admin

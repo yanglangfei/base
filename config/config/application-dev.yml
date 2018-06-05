@@ -1,23 +1,92 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    preferIpAddress: true
-
 define:
+  isDebug: 1
+  dashboard:
+    username: admin
+    password: admin123
   druid:
     username: admin
     password: admin123
   mysql:
     write:
-      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=utf8
       username: root
       password: admin123
     read1:
-      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=utf8
       username: root
       password: admin123
   paging:
     defaultSize: 15      #默认分页大小
     defaultNum: 1
+  localStoragePath: X:/
+  resourceAccessUri: http://192.168.1.40:10300/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/   #连接的 eureka 服务器地址
+  instance:
+    refer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
+spring:
+  http:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 100MB
+  cloud:
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 192.168.1.45
+    port: 5672
+    username: admin
+    password: admin123
+  redis:
+    host: 192.168.1.45
+    port: 6379
+    password: admin123
+  data:
+    mongodb:
+      uri: mongodb://192.168.1.40:27017/ps_dev
+  zipkin:
+    enabled: true
+#    base-url: http://192.168.1.50:9411
+  sleuth:
+    sampler:
+      percentage: 1.0  #采样比例
+  boot:
+    admin:
+      username: ${define.dashboard.username} #注册监控服务账号
+      password: ${define.dashboard.password} #注册监控服务密码
+      client:
+        metadata:
+          user.name: ${security.user.name}
+          user.password: ${security.user.password}
+hystrix:
+  stream:
+    dashboard:
+      intervalInMilliseconds: 3000
+  command:
+    default:
+      execution:
+#        timeout:
+#          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 30000     #ribbon 负载均衡连接超时时间
+  ReadTimeout: 60000       #ribbon 负载均衡读取超时时间
+#management:
+#  security:
+#    enabled: false
+logging:
+  level:
+    com.naju: debug
+    org.springframework.data.mongodb.core: debug
+#    org.springframework: debug
+  file: D:\Logs\com\naju\${spring.application.name}.log

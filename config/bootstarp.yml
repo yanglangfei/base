@@ -1,0 +1,23 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config
+eureka:
+  instance:
+    refer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+  boot:
+    admin:
+      username: admin #注册监控服务账号
+      password: admin123 #注册监控服务密码
+management:
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin123

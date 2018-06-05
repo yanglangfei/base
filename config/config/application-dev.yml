@@ -6,9 +6,6 @@ eureka:
     preferIpAddress: true
 
 define:
-  druid:
-    username: admin
-    password: admin123
   mysql:
     write:
       url: jdbc:mysql://localhost:3306/ps_dev?useUnicode=true&characterEncoding=UTF-8

@@ -1,4 +1,7 @@
 define:
+  druid:
+    username: admin
+    password: admin123
   # mysql 主从库配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

@@ -9,14 +9,19 @@ spring:
           search-paths: /config/config
           basedir: /config
       profile: dev
-  application:
-    name: config-server
-    #  fail-fast: true
-         # basedir:
-
-server:
-  port: 8888
-
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 47.98.168.231
+    port: 5672
+    username: admin
+    password: admin123
+logging:
+  file: D:\Logs\com\config.log
+  level:
+    com.naju: debug
+hystrix.stream.dashboard.intervalInMilliseconds: 5000
 
 #security:
  # user:

@@ -23,7 +23,8 @@ define:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${security.user.name}:${security.user.password}@127.0.0.1:8761/eureka/  #连接的 eureka 服务器地址
+      defaultZone: http://localhost:8761/eureka/   #连接的 eureka 服务器地址
+      #defaultZone: http://${security.user.name}:${security.user.password}@127.0.0.1:8761/eureka/  #连接的 eureka 服务器地址
   instance:
     refer-ip-address: true
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
@@ -87,14 +88,3 @@ logging:
     org.springframework.data.mongodb.core: debug
 #    org.springframework: debug
   file: D:\Logs\com\lw\${spring.application.name}.log
-
-
-# 关闭安全访问
-management:
-  security:
-    enabled: true
-
-security:
-  user:
-    name: admin
-    password: admin123

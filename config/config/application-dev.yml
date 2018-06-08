@@ -19,7 +19,7 @@ define:
     defaultSize: 15      #默认分页大小
     defaultNum: 1
   localStoragePath: X:/
-  resourceAccessUri: http://192.168.1.40:10300/
+  #resourceAccessUri: http://192.168.1.40:10300/
 eureka:
   client:
     serviceUrl:
@@ -41,7 +41,7 @@ spring:
       trace:
         enabled: true
   rabbitmq:
-    host: 192.168.1.45
+    host: 47.98.168.231
     port: 5672
     username: admin
     password: admin123

@@ -1,8 +1,26 @@
 server:
   port: 8761
+spring:
+  application:
+    name: discover
+  cloud:
+    config:
+      uri: http://config:8888
+      profile: dev
 eureka:
   client:
-    fetch-registry: false
     register-with-eureka: false
-
-
+    fetch-registry: false
+  server:
+    enable-self-preservation: false # 关闭自我保护，保证会注销服务，清理无效节点
+    eviction-interval-timer-in-ms: 60000 # 清理无效节点间隔（毫秒）
+management:
+  security:
+    enabled: true
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin123
+hystrix.stream.dashboard.intervalInMilliseconds: 5000

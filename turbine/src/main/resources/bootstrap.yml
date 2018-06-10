@@ -1,0 +1,23 @@
+server:
+  port: 7904
+spring:
+  application:
+    name: turbine
+  cloud:
+    config:
+      fail-fast: true
+      uri: http://config:8888
+      profile: dev
+turbine:
+  stream:
+    port: 8989
+management:
+  security:
+    enabled: true
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: admin123
+hystrix.stream.dashboard.intervalInMilliseconds: 5000
